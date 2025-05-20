@@ -8,3 +8,4 @@ namespace ArtProject.Models
         public int Id { get; set; }
 
     }
+}
