@@ -20,6 +20,35 @@ namespace ArtProject.Services
             var arts = await _artRepository.GetAllAsync();
             return arts.Where(p => p.Price < price);
         }
+        public async Task<IEnumerable<Art>> GetAllArtsAbovePriceAsync(int price)
+        {
+            var arts = await _artRepository.GetAllAsync();
+            return arts.Where(p => p.Price > price);
+        }
+
+        public async Task<IEnumerable<Art>> GetArtsByArtistNameAsync(string name)
+        {
+            var arts = await _artRepository.GetAllAsync();
+            return arts.Where(a => a.Artist != null &&
+                                   a.Artist.Name.ToLower().Contains(name.ToLower()));
+        }
+
+        public async Task<IEnumerable<Art>> GetArtsByLocationAsync(string location)
+        {
+            var arts = await _artRepository.GetAllAsync();
+            return arts.Where(a => a.Location.ToLower() == location.ToLower());
+        }
+
+
+        public async Task<double> GetAverageArtPriceAsync()
+        {
+            var arts = await _artRepository.GetAllAsync();
+
+            if (!arts.Any())
+                return 0;
+
+            return arts.Average(a => a.Price);
+        }
 
         public void UpdateArt(ArtUpdateDto dto)
         {

@@ -7,6 +7,6 @@ namespace ArtProject.Models
         [Required(ErrorMessage = "Genre is required")]
         [MaxLength(20)]
         public string Janri { get; set; }
-        public ICollection<Art> Books = new List<Art>();
+        public ICollection<Art> Arts = new List<Art>();
     }
 }

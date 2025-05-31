@@ -11,6 +11,6 @@ namespace ArtProject.Models
         [Required(ErrorMessage = "Surname is required")]
         [MaxLength(20)]
         public string Surname { get; set; }
-        public ICollection<Art> Books = new List<Art>();
+        public ICollection<Art> Arts = new List<Art>();
     }
 }
