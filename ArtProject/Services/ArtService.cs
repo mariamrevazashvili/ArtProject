@@ -10,7 +10,7 @@ namespace ArtProject.Services
     {
         private readonly IArtRepository _artRepository;
 
-        public ArtService(ArtRepository artRepository)
+        public ArtService(IArtRepository artRepository)
         {
             _artRepository = artRepository;
         }
@@ -28,7 +28,6 @@ namespace ArtProject.Services
             {
                 ArtMappingExtensions.UpdateDto(dto, art);
                 _artRepository.Update(art);
-                _artRepository.SaveChangesAsync();
             }
         }
 
